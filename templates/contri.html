@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            color: #333;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .table-container {
+            margin-top: 50px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+            transition: background 0.3s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            }
+
+        .nav-link {
+            color: #fff !important;
+            margin-left: 15px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <img src="{{ url_for('static', filename='images/Screenshot 2025-02-24 205743.png') }}"
+            style="height: 45px; border-radius: 50%;">
+        <a class="navbar-brand ml-3" href="#" style="color: white;">NextGEN</a>
+        <div class="ml-auto d-flex align-items-center">
+            <a href="{{ url_for('dashboard') }}" class="nav-link">Home</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2 class="mt-4">Meet Our Team</h2>
+        <div class="table-container">
+            <table class="table table-hover text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Anshul Kalamkar</td>
+                        <td>UI/UX Designer</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Shreyash Bhojane</td>
+                        <td>Frontend Developer</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Vedant Lavhale</td>
+                        <td>Backend Developer</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Ombhushan Adokar</td>
+                        <td>Backend Developer</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

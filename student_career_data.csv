@@ -1,0 +1,42 @@
+username,age,grade,favorite_subjects,hobbies,preferred_work_environment,strengths,weaknesses,career_interests
+student_1,17,12,"Math, Computer Science","Reading, Gaming",Outdoor,"Logical thinking, Programming",Public speaking,Engineering
+student_2,18,12,"Biology, Chemistry","Reading, Drawing",Indoor,"Attention to detail, Analytical skills",Time management,Pharmacy
+student_3,17,12,"Biology, Chemistry","Writing, Reading",Indoor,"Empathy, Critical thinking",Public speaking,MBBS
+student_4,17,12,"History, English","Writing, Reading, Art",Outdoor,"Creativity, Writing",Math,Humanities
+student_5,17,12,"Math, Biology","Reading, Swimming",Indoor,"Analytical skills, Problem-solving",Public speaking,Pharmacy
+student_6,18,12,"Physics, Math","Reading, Programming",Indoor,"Logical thinking, Problem-solving",Communication,Engineering
+student_7,18,12,"Biology, English","Drawing, Volunteering",Outdoor,"Empathy, Communication",Math,MBBS
+student_8,17,12,"Chemistry, Biology","Reading, Gardening",Indoor,"Analytical skills, Attention to detail",Public speaking,Pharmacy
+student_9,17,12,"Biology, Physics","Reading, Drawing",Indoor,"Empathy, Attention to detail",Math,MBBS
+student_11,18,12,"Art, Design","Painting, Sculpting",Indoor,"Creativity, Design thinking",Data analysis,Graphic Designer
+student_12,17,12,"Computer Science, Math","Video games, Robotics",Indoor,"Programming, Logical thinking",Writing,Software Developer
+student_13,18,12,"Math, Computer Science","Reading, Coding",Indoor,"Logical thinking, Problem-solving",Time management,Software Developer
+student_14,18,12,"Biology, Chemistry","Volunteering, Reading",Outdoor,"Empathy, Attention to detail",Public speaking,MBBS
+student_15,17,12,"Math, Physics","Swimming, Chess",Indoor,"Analytical skills, Strategic thinking",Public speaking,Engineering
+student_17,17,12,"Biology, Chemistry","Gardening, Photography",Outdoor,"Attention to detail, Critical thinking",Time management,Pharmacy
+student_18,18,12,"Math, Computer Science","Coding, Gaming",Indoor,"Logical thinking, Programming",Public speaking,Software Developer
+student_19,17,12,"Physics, Math","Robotics, Video games",Indoor,"Problem-solving, Logical thinking",Time management,Engineering
+student_21,17,12,"Art, Design","Drawing, Painting",Indoor,"Creativity, Design thinking",Data analysis,Graphic Designer
+student_22,18,12,"Biology, Chemistry","Reading, Volunteering",Outdoor,"Empathy, Attention to detail",Math,MBBS
+student_23,17,12,"Math, Computer Science","Robotics, Video games",Indoor,"Problem-solving, Logical thinking",Public speaking,Software Developer
+student_24,18,12,"Biology, Chemistry","Reading, Swimming",Outdoor,"Empathy, Critical thinking",Time management,Pharmacy
+student_26,18,12,"Art, Design","Drawing, Sculpting",Indoor,"Creativity, Design thinking",Time management,Graphic Designer
+student_27,17,12,"Math, Physics","Coding, Gaming",Indoor,"Logical thinking, Problem-solving",Public speaking,Engineering
+student_28,18,12,"Biology, Chemistry","Gardening, Reading",Outdoor,"Attention to detail, Analytical skills",Time management,Pharmacy
+student_30,18,12,"Math, Computer Science","Reading, Programming",Indoor,"Logical thinking, Problem-solving",Public speaking,Software Developer
+student_31,17,12,"Biology, Chemistry","Swimming, Volunteering",Outdoor,"Empathy, Attention to detail",Time management,MBBS
+student_32,18,12,"Physics, Math","Robotics, Video games",Indoor,"Problem-solving, Logical thinking",Public speaking,Engineering
+student_33,17,12,"Art, Design","Drawing, Painting",Indoor,"Creativity, Design thinking",Data analysis,Graphic Designer
+student_35,17,12,"Biology, Physics","Reading, Gardening",Outdoor,"Attention to detail, Analytical skills",Time management,MBBS
+student_36,18,12,"Math, Computer Science","Coding, Gaming",Indoor,"Logical thinking, Problem-solving",Public speaking,Software Developer
+student_37,17,12,"Biology, Chemistry","Reading, Volunteering",Outdoor,"Empathy, Critical thinking",Time management,Pharmacy
+student_38,18,12,"Physics, Math","Swimming, Chess",Indoor,"Analytical skills, Strategic thinking",Public speaking,Engineering
+student_40,18,12,"Art, Design","Drawing, Sculpting",Indoor,"Creativity, Design thinking",Time management,Graphic Designer
+student_41,17,12,"Math, Computer Science","Robotics, Video games",Indoor,"Problem-solving, Logical thinking",Public speaking,Software Developer
+student_42,18,12,"Biology, Chemistry","Reading, Swimming",Outdoor,"Empathy, Attention to detail",Time management,Pharmacy
+student_44,18,12,"Math, Physics","Coding, Gaming",Indoor,"Logical thinking, Problem-solving",Public speaking,Engineering
+student_45,17,12,"Biology, Chemistry","Swimming, Volunteering",Outdoor,"Empathy, Critical thinking",Time management,MBBS
+student_46,18,12,"Physics, Math","Robotics, Video games",Indoor,"Problem-solving, Logical thinking",Public speaking,Engineering
+student_47,17,12,"Art, Design","Drawing, Painting",Indoor,"Creativity, Design thinking",Data analysis,Graphic Designer
+student_49,17,12,"Biology, Physics","Reading, Gardening",Outdoor,"Attention to detail, Analytical skills",Time management,MBBS
+student_50,18,12,"Math, Computer Science","Reading, Programming",Indoor,"Logical thinking, Problem-solving",Public speaking,Software Developer

@@ -1,0 +1,6 @@
+username,age,grade,favorite_subjects,hobbies,preferred_work_environment,career_interests,strengths,weaknesses,aptitude_test_scores
+john_doe,17,12,Math;Physics,Reading;Coding,Indoor,Engineer,Analytical;Problem-solving,Public speaking,85;90;78
+jane_smith,18,12,Biology;Chemistry,Drawing;Swimming,Outdoor,Doctor,Empathy;Attention to detail,Time management,88;92;80
+mark_jones,17,12,History;English,Writing;Debating,Indoor,Lawyer,Communication;Critical thinking,Math,78;85;88
+lisa_brown,18,12,Art;Design,Painting;Sculpting,Indoor,Graphic Designer,Creativity;Design thinking,Data analysis,90;85;95
+paul_green,17,12,Computer Science;Math,Video games;Robotics,Indoor,Software Developer,Programming;Logical thinking,Writing,95;88;92

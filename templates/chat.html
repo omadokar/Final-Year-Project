@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #333;
+            animation: fadeInUp 1.5s ease-in-out;
+            text-decoration: underline;
+        }
+
+        .chat-container {
+            width: 500px;
+            max-width: 90%;
+            height: 500px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: #fff;
+            overflow-y: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.7s ease-out;
+        }
+
+        .chat-bubble {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 60%;
+            word-wrap: break-word;
+            opacity: 0;
+            animation: fadeInBubble 0.5s ease-in-out forwards;
+        }
+
+        .user {
+            background-color: #0263eb;
+            color: white;
+            align-self: flex-end;
+            animation-delay: 0.3s;
+        }
+
+        .bot {
+            background-color: #ECECEC;
+            align-self: flex-start;
+            animation-delay: 0.3s;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            margin-left: 14px;
+            transition: 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0263eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .chat-container p {
+            margin: 10px 0;
+        }
+
+        /* Bold, Italic, and List styling */
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInBubble {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Typing animation for the thinking message */
+        @keyframes typing {
+            0% {
+                content: "";
+            }
+
+            50% {
+                content: ".";
+            }
+
+            100% {
+                content: "...";
+            }
+        }
+
+        .thinking {
+            color: #666;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 10px;
+            animation: typing 1.5s steps(5) infinite;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>NextGEN Chatbot</h1>
+    <div class="chat-container" id="chat-container">
+        <!-- Chat messages will be appended here -->
+    </div>
+    <div class="input1">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()" style="margin-left: 200px;">Send</button>
+    </div>
+
+    <script>
+        const apiKey = "AIzaSyDkvoH9QY32Sqw_yD87kFEqAB2mrpVVaa8"; // Replace with your actual Gemini API key
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+
+        // Event listener for "Enter" key to send message
+        userInput.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default action of 'Enter' (e.g., form submission)
+                sendMessage();
+            }
+        });
+
+        async function sendMessage() {
+            const userMessage = userInput.value;
+            if (!userMessage.trim()) return;
+
+            // Display user message
+            appendMessage(userMessage, 'user');
+
+            // Show thinking message while waiting for response
+            const thinkingMessage = appendThinkingMessage();
+
+            // Clear the input field
+            userInput.value = '';
+
+            // Send the message to Google Gemini API
+            const response = await getGeminiResponse(userMessage);
+
+            // Remove thinking message
+            chatContainer.removeChild(thinkingMessage);
+
+            // Format and display bot response
+            const formattedResponse = formatResponse(response);
+            appendMessage(formattedResponse, 'bot');
+        }
+        function appendMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-bubble', sender);
+            messageDiv.innerHTML = message;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the latest message
+        }
+
+        function appendThinkingMessage() {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-bubble', 'thinking');
+            messageDiv.innerHTML = "Thinking...";
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the latest message
+            return messageDiv;
+        }
+
+        
+
+        async function getGeminiResponse(message) {
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            const headers = {
+                "Content-Type": "application/json"
+            };
+
+            const data = {
+                contents: [
+                    {
+                        parts: [
+                            { text: message } // User's message
+                        ]
+                    }
+                ]
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.candidates && result.candidates.length > 0) {
+                const candidate = result.candidates[0];
+                if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
+                    return candidate.content.parts[0].text; // Extract the text
+                }
+            }
+
+            return "Sorry, I couldn't get the information. Please try again."; // In case of an error or empty response
+        }
+
+        // Function to format the response nicely, supporting bold, italic, and lists
+        function formatResponse(responseText) {
+            let formattedText = responseText.trim();
+
+            // Replace **text** with bold
+            formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<span class="bold">$1</span>');
+
+            // Replace _text_ with italic
+            formattedText = formattedText.replace(/_(.*?)_/g, '<span class="italic">$1</span>');
+
+            // Replace list items with unordered list (bullet points)
+            formattedText = formattedText.replace(/^(\-|\*|\+)\s(.*)$/gm, '<ul><li>$2</li></ul>');
+
+            // Replace new line-separated list items (for ordered lists)
+            formattedText = formattedText.replace(/^(\d+)\.\s(.*)$/gm, function (match, p1, p2) {
+                return `<ol><li>${p2}</li></ol>`;
+            });
+
+            // Ensure the text wraps properly in the UI
+            formattedText = formattedText.replace(/\n/g, '<br>');  // Convert line breaks to <br> tags
+            formattedText = formattedText.replace(/(.*)(\n|$)/g, '<p>$1</p>'); // Wrap each paragraph in <p> tags
+
+            return formattedText;
+        }
+    </script>
+</body>
+
+</html>

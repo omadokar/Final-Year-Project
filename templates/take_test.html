@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4caf50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center" style="text-align: center;font-size: 35px;text-decoration: underline;">Career Prediction Test</h2>
+        <form action="/take_test" method="post">
+    
+            <!-- Big Five Personality Traits -->
+            <div class="mb-3">
+                <label class="form-label">1. Do you enjoy trying new experiences?</label>
+                <select name="O_score_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+            <div class="mb-3">
+                <label class="form-label">2.Do you like thinking about abstract ideas?</label>
+                <select name="O_score_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">3. Do you prefer variety over routine?</label>
+                <select name="O_score_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">4. Do you often imagine different possibilities for the future?</label>
+                <select name="O_score_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">5. Do you enjoy artistic or creative activities?</label>
+                <select name="O_score_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">6. Do you usually plan things in advance?</label>
+                <select name="C_score_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">7. Do you complete tasks even when they are boring or difficult?</label>
+                <select name="C_score_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">8. Do you keep your workspace neat and organized?</label>
+                <select name="C_score_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">9. Do you set goals and work hard to achieve them?</label>
+                <select name="C_score_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">10. Do you follow schedules and deadlines strictly?</label>
+                <select name="C_score_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">11. Do you enjoy meeting new people?</label>
+                <select name="E_score_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">12. Do you like working in a team rather than alone?</label>
+                <select name="E_score_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">13. Do you feel energized when talking to people?</label>
+                <select name="E_score_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">14. Do you enjoy being the center of attention?</label>
+                <select name="E_score_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">15. Do you find it easy to start conversations?</label>
+                <select name="E_score_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">16. Do you enjoy helping others?</label>
+                <select name="A_score_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">17. Do you easily empathize with other people’s feelings?</label>
+                <select name="A_score_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">18. Do you prefer cooperation over competition?</label>
+                <select name="A_score_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">19. Do you trust people easily?</label>
+                <select name="A_score_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">20. Do you forgive others even when they make mistakes?</label>
+                <select name="A_score_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">21. Do you often feel anxious or nervous?</label>
+                <select name="N_score_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">22. Do you get stressed easily?</label>
+                <select name="N_score_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">23. Do you often feel overwhelmed by emotions?</label>
+                <select name="N_score_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">24. Do you worry a lot about the future?</label>
+                <select name="N_score_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">25. Do you find it hard to stay calm under pressure?</label>
+                <select name="N_score_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">26. Do you enjoy solving math-related problems?</label>
+                <select name="Numerical_Aptitude_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">27. Do you find it easy to work with numbers?</label>
+                <select name="Numerical_Aptitude_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">28. Do you like solving puzzles that involve calculations?</label>
+                <select name="Numerical_Aptitude_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">29. Do you feel confident when interpreting numerical data?</label>
+                <select name="Numerical_Aptitude_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">30. Do you enjoy activities related to finance or statistics?</label>
+                <select name="Numerical_Aptitude_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">31. Do you easily understand maps and diagrams?</label>
+                <select name="Spatial_Aptitude_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">32. Do you enjoy working with 3D objects or models?</label>
+                <select name="Spatial_Aptitude_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">33. Do you find it easy to visualize things in your mind?</label>
+                <select name="Spatial_Aptitude_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">34. Do you enjoy drawing, designing, or building things?</label>
+                <select name="Spatial_Aptitude_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">35. Do you like solving puzzles involving shapes and patterns?</label>
+                <select name="Spatial_Aptitude_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">36. Do you quickly notice small details that others miss?</label>
+                <select name="Perceptual_Aptitude_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">37. Do you enjoy activities that require sharp observation skills?</label>
+                <select name="Perceptual_Aptitude_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">38. Do you find it easy to spot differences between images or objects?</label>
+                <select name="Perceptual_Aptitude_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">39. Do you react quickly to visual changes around you?</label>
+                <select name="Perceptual_Aptitude_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">40. Do you enjoy games or challenges that test your attention to detail?</label>
+                <select name="Perceptual_Aptitude_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">41. Do you easily recognize patterns in information?</label>
+                <select name="Abstract_Reasoning_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">42. Do you enjoy solving logic-based puzzles?</label>
+                <select name="Abstract_Reasoning_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">43. Do you like figuring out solutions to complex problems?</label>
+                <select name="Abstract_Reasoning_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">44. Do you quickly understand new concepts and ideas?</label>
+                <select name="Abstract_Reasoning_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">45. Do you prefer tasks that involve logical reasoning over memorization?</label>
+                <select name="Abstract_Reasoning_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+    
+            <div class="mb-3">
+                <label class="form-label">46. Do you enjoy reading and writing?</label>
+                <select name="Verbal_Reasoning_0" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">47. Do you find it easy to understand difficult texts?</label>
+                <select name="Verbal_Reasoning_1" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">48. Do you have a good vocabulary?</label>
+                <select name="Verbal_Reasoning_2" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">49. Do you like summarizing or explaining information clearly?</label>
+                <select name="Verbal_Reasoning_3" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">50. Do you perform well in language-based activities like debating or storytelling?</label>
+                <select name="Verbal_Reasoning_4" class="form-select" required>
+                    <option value="" disabled selected>No Select</option>
+                    <option value="2">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+    
+            <button type="submit" class="btn btn-primary" style="padding-left: 25px;padding-right: 25px;border-radius: 25px;margin-left: 350px;margin-top: 20px;padding-top: 15px;padding-bottom: 15px;background-color: #66a6ff;color: azure;font-weight: bold;font-size: 15px;">Get Results</button>
+        </form>
+        </form>
+    </div>
+</body>
+</html>
