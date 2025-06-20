@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, flash, session
+from flask import Flask, request, render_template, redirect, url_for, flash, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 import pandas as pd
@@ -7,12 +7,21 @@ import joblib
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# MongoDB Atlas Configuration
-MONGO_URI = "mongodb+srv://angrybird081003:6gbjWprDqqRS6jzm@cluster0.ncf72gj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Replace this with your actual MongoDB URI
-client = MongoClient(MONGO_URI)
-db = client['user_data']
-users_collection = db['users']
-career_collection = db['career_history']
+# MongoDB Atlas URI
+MONGO_URI = "mongodb+srv://angrybird081003:6gbjWprDqqRS6jzm@cluster0.ncf72gj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+# Safe DB access using Flask's `g`
+def get_db():
+    if 'db' not in g:
+        client = MongoClient(MONGO_URI)
+        g.db = client['user_data']
+    return g.db
+
+@app.teardown_appcontext
+def close_db(error):
+    db = g.pop('db', None)
+    if db:
+        db.client.close()
 
 # Load model and encoders
 model = joblib.load('career_model.pkl')
@@ -21,7 +30,7 @@ career_df = pd.read_csv('Data_final.csv')
 
 questions = {
     "O_score": ["I enjoy trying new experiences.", "I like thinking about abstract ideas.",
-                 "I prefer variety over routine.", "I am highly imaginative.", "I am open to different perspectives."],
+                "I prefer variety over routine.", "I am highly imaginative.", "I am open to different perspectives."],
     "C_score": ["I stick to my plans and schedules.", "I complete tasks on time.",
                 "I am highly organized.", "I work hard to achieve my goals.", "I pay attention to details."],
     "E_score": ["I enjoy socializing with people.", "I prefer working in a team.",
@@ -31,11 +40,11 @@ questions = {
     "N_score": ["I often feel anxious or nervous.", "I get stressed easily.",
                 "I overthink small problems.", "I experience mood swings.", "I find it hard to stay calm under pressure."],
     "Numerical_Aptitude": ["I enjoy solving math problems.", "I am comfortable with numbers.",
-                            "I can analyze numerical data easily.", "I like solving logical puzzles.", "I am good at mental calculations."],
+                           "I can analyze numerical data easily.", "I like solving logical puzzles.", "I am good at mental calculations."],
     "Spatial_Aptitude": ["I can visualize objects in 3D easily.", "I enjoy puzzles involving shapes.",
                          "I can easily read maps and diagrams.", "I have good hand-eye coordination.", "I like working with design or architecture."],
     "Perceptual_Aptitude": ["I notice small details quickly.", "I can spot patterns easily.",
-                             "I am good at identifying differences between images.", "I work well under time pressure.", "I enjoy activities that require quick thinking."],
+                            "I am good at identifying differences between images.", "I work well under time pressure.", "I enjoy activities that require quick thinking."],
     "Abstract_Reasoning": ["I can identify patterns in complex data.", "I enjoy problem-solving activities.",
                            "I am good at recognizing trends.", "I can understand complex concepts quickly.", "I think logically and analytically."],
     "Verbal_Reasoning": ["I enjoy reading and writing.", "I can understand complex texts easily.",
@@ -48,6 +57,8 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    db = get_db()
+    users_collection = db['users']
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
@@ -64,6 +75,8 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    db = get_db()
+    users_collection = db['users']
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -93,6 +106,10 @@ def admin_panel():
         flash("Access denied!", "danger")
         return redirect(url_for('login'))
 
+    db = get_db()
+    users_collection = db['users']
+    career_collection = db['career_history']
+
     users = list(users_collection.find())
     data = []
     for user in users:
@@ -108,11 +125,17 @@ def admin_panel():
 def dashboard():
     if 'user_id' not in session:
         return redirect(url_for('login'))
+
+    db = get_db()
+    career_collection = db['career_history']
     history = career_collection.find({"user_id": session['user_id']})
     return render_template('dash.html', name=session['name'], history=history)
 
 @app.route('/take_test', methods=['GET', 'POST'])
 def take_test():
+    db = get_db()
+    career_collection = db['career_history']
+
     if request.method == 'GET':
         return render_template('take_test.html', questions=questions)
 
