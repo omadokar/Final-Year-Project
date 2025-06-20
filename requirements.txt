@@ -1,6 +1,6 @@
 Flask==3.0.3
 pymongo==4.10.1
-pandas==2.0.3
+pandas==2.2.2
 joblib==1.4.2
 dnspython==2.6.1
 Werkzeug==3.0.6
