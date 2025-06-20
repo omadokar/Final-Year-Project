@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,6 +94,20 @@
             resize: none;
         }
 
+        .btn-primary {
+            padding-left: 25px;
+            padding-right: 25px;
+            border-radius: 25px;
+            margin-left: 350px;
+            margin-top: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: #66a6ff;
+            color: azure;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -100,6 +115,10 @@
 
             h1 {
                 font-size: 2rem;
+            }
+
+            .btn-primary {
+                margin-left: 100px;
             }
         }
 
@@ -109,6 +128,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -116,11 +136,13 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h2 class="text-center" style="text-align: center;font-size: 35px;text-decoration: underline;">Career Prediction Test</h2>
+        <h2 class="text-center" style="text-align: center;font-size: 35px;text-decoration: underline;">Career Prediction
+            Test</h2>
         <form action="/take_test" method="post">
-    
+
             <!-- Big Five Personality Traits -->
             <div class="mb-3">
                 <label class="form-label">1. Do you enjoy trying new experiences?</label>
@@ -130,7 +152,7 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
+
             <div class="mb-3">
                 <label class="form-label">2.Do you like thinking about abstract ideas?</label>
                 <select name="O_score_1" class="form-select" required>
@@ -163,8 +185,8 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">6. Do you usually plan things in advance?</label>
                 <select name="C_score_0" class="form-select" required>
@@ -205,8 +227,8 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">11. Do you enjoy meeting new people?</label>
                 <select name="E_score_0" class="form-select" required>
@@ -247,8 +269,8 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">16. Do you enjoy helping others?</label>
                 <select name="A_score_0" class="form-select" required>
@@ -289,8 +311,8 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">21. Do you often feel anxious or nervous?</label>
                 <select name="N_score_0" class="form-select" required>
@@ -331,8 +353,8 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">26. Do you enjoy solving math-related problems?</label>
                 <select name="Numerical_Aptitude_0" class="form-select" required>
@@ -373,8 +395,8 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">31. Do you easily understand maps and diagrams?</label>
                 <select name="Spatial_Aptitude_0" class="form-select" required>
@@ -415,8 +437,8 @@
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">36. Do you quickly notice small details that others miss?</label>
                 <select name="Perceptual_Aptitude_0" class="form-select" required>
@@ -450,15 +472,16 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">40. Do you enjoy games or challenges that test your attention to detail?</label>
+                <label class="form-label">40. Do you enjoy games or challenges that test your attention to
+                    detail?</label>
                 <select name="Perceptual_Aptitude_4" class="form-select" required>
                     <option value="" disabled selected>No Select</option>
                     <option value="2">Yes</option>
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">41. Do you easily recognize patterns in information?</label>
                 <select name="Abstract_Reasoning_0" class="form-select" required>
@@ -492,15 +515,16 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">45. Do you prefer tasks that involve logical reasoning over memorization?</label>
+                <label class="form-label">45. Do you prefer tasks that involve logical reasoning over
+                    memorization?</label>
                 <select name="Abstract_Reasoning_4" class="form-select" required>
                     <option value="" disabled selected>No Select</option>
                     <option value="2">Yes</option>
                     <option value="0">No</option>
                 </select>
             </div>
-    
-    
+
+
             <div class="mb-3">
                 <label class="form-label">46. Do you enjoy reading and writing?</label>
                 <select name="Verbal_Reasoning_0" class="form-select" required>
@@ -534,17 +558,19 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">50. Do you perform well in language-based activities like debating or storytelling?</label>
+                <label class="form-label">50. Do you perform well in language-based activities like debating or
+                    storytelling?</label>
                 <select name="Verbal_Reasoning_4" class="form-select" required>
                     <option value="" disabled selected>No Select</option>
                     <option value="2">Yes</option>
                     <option value="0">No</option>
                 </select>
             </div>
-    
-            <button type="submit" class="btn btn-primary" style="padding-left: 25px;padding-right: 25px;border-radius: 25px;margin-left: 350px;margin-top: 20px;padding-top: 15px;padding-bottom: 15px;background-color: #66a6ff;color: azure;font-weight: bold;font-size: 15px;">Get Results</button>
+
+            <button type="submit" class="btn btn-primary">Get Results</button>
         </form>
         </form>
     </div>
 </body>
+
 </html>
